@@ -1,3 +1,14 @@
+/* font */
+@font-face {
+    font-family:mplus-1c-light;
+    src: url('mplus-1c-light.eot'), url("mplus-1c-light.ttf") format("truetype")
+}
+
+@font-face {
+    font-family:mplus-1m-light;
+    src: url('mplus-1m-light.eot'), url("mplus-1m-light.ttf") format("truetype")
+}
+
 
 body {
     position: relative;
