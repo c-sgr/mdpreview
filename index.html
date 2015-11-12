@@ -1,0 +1,60 @@
+<!DOCUMENT html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Markdown Preview</title>
+        <link type="text/css" rel="stylesheet" href="css/styles/shCore.css">
+        <link type="text/css" rel="stylesheet" href="css/styles/shThemeCustom.css">
+        <link type="text/css" rel="stylesheet" href="css/md-preview.css">
+    </head>
+    <body class="nav-hide">
+        <div id="container">
+            <article id="contents">Drop markdown file to preview.</article>
+        </div>
+        <nav id="navigation">
+            <ul id="navlist"></ul>
+        </nav>
+        
+        <script src="js/shCore.js"></script>
+        <script src="js/shAutoloader.js"></script>
+        <script src="js/brushes/shBrushXml.js"></script>
+        <script src="js/marked_custom.js"></script>
+        <script src="js/md-preview.js"></script>
+        <script src="js/google-picker.js"/></script>
+        <!-- The Google API Loader script. -->
+        <script>
+            (function(window, document) {
+                 document.addEventListener("keydown", function(e) {
+                     switch (e.keyCode){
+                         case 71: // g
+                         GP.showPicker();
+                         break;
+                     }
+                 }, false); 
+
+                 GP.onPicked = function (txt) {
+                    if (typeof txt === 'string') {
+                        MDPreview.renderTxt(txt);
+                    }
+                 };
+
+                 var userAgent = userAgent = window.navigator.userAgent.toLowerCase();
+                 var button;
+                 var conents;
+
+                 if (userAgent.indexOf('ipad') != -1) {
+                    button = document.createElement('button');
+                    button.innerText = 'open google drive';
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        GP.showPicker();
+                    }, false);
+                    contents = document.getElementById('contents');
+                    contents.innerHTML = '';
+                    contents.appendChild(button);
+                 }
+            })(window, document);
+        </script>
+        <script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script>
+    </body>
+</html>

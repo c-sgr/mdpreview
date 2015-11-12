@@ -1,0 +1,263 @@
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-width: 680px;
+    background-image: url("../img/binding_light.png");
+    font-family: "mplus-1c-light", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    font-size: 11pt;
+    color: #000;
+    overflow: hidden;
+
+    /* animation */
+    -webkit-transition: left 0.3s ease-in-out;
+    -moz-transition: left 0.3s ease-in-out;
+    -ms-transition: left 0.3s ease-in-out;
+    -o-transition: left 0.3s ease-in-out;
+    transition: left 0.3s ease-in-out;
+}
+
+
+body.nav-hide {
+    left: 0;
+}
+
+body.nav-show {
+    left: 360px;
+}
+
+/* container */
+#container {
+    padding: 20px 0;
+    width: 100%;
+    overflow: auto;
+}
+
+/* contents */
+#contents {
+    padding: 40px;
+    margin: 0 auto;
+    width: 80%;
+    background: #fff;
+    font-size: 1em;
+}
+#contents.presen-mode {
+    font-size: 1.6em;
+}
+
+
+/* navigation */
+#navigation {
+    position: absolute;
+    padding: 20px 0;
+    top: 0;
+    left: -360px;
+    width: 360px;
+    overflow: auto;
+}
+
+#navigation ul {
+    margin: 0 0 0 20px;
+    padding: 0;
+    list-style: none;
+}
+
+#navigation ul li {
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    color: #404040;
+    cursor: pointer;
+}
+
+#navigation ul li.h1 {
+    font-size: 1.4em;
+}
+
+#navigation ul li.h2{
+    font-size: 1.15em;
+}
+
+#navigation ul li.h2:before {
+    content: '■';
+    padding-right: 0.26em;
+    font-size: 0.8em;
+}
+
+#navigation ul li.h3 {
+    padding-left: 30px;
+    font-size: 1.05em;
+}
+
+#navigation ul li.h4 {
+    padding-left: 50px;
+    font-size: 1em;
+}
+
+#navigation ul li.h5 {
+    padding-left: 70px;
+    font-size: 1em;
+}
+
+#navigation ul li.h6 {
+    padding-left: 90px;
+    font-size: 1em;
+}
+
+#navigation ul li.highlight {
+    background: #404040;
+    color: #fff;
+}
+
+
+/* h1~4 */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    color: #000;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 2.8em;
+}
+h2 {
+    margin: 120px auto 24px;
+    font-size: 2.0em;
+    border-bottom: solid 1px #777;
+}
+h3 {
+    margin: 64px auto 24px;
+    font-size: 1.4em;
+    border-bottom: solid 1px #bbb;
+}
+h4 {
+    margin-top: 32px;
+    font-size: 1.0em;
+    font-weight: bold;
+}
+
+
+/* table */
+table {
+    border: 1px solid #e5e5e5;
+    border-spacing: 0;
+    font-size: 1em;
+    border-collapse: collapse;
+    * {
+        color: #000;
+    }
+}
+
+thead th {
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8f8f8;
+}
+
+td {
+    padding: 8px 12px;
+    border: 1px solid #e5e5e5;
+}
+
+
+/* other */
+ul ul, ul ol, ul dl,
+ol ul, ol ol, ol dl,
+dl ul, dl ol, dl dl {
+    padding-left: 1.4em;
+}
+
+pre {
+    padding: 1em;
+    background-color: #f8f8f8;
+    border: 1px solid #e5e5e5;
+    font-family: "mplus-1m-light", monospace;
+    color: #4a4a4a;
+    overflow: auto;
+}
+
+code {
+    margin: 0 2px;
+    padding: 0.1em 0.5em;
+    background-color: #f8f8f8;
+    border: 1px solid #d5d5d5;
+    font-family: "mplus-1m-light", monospace;
+    font-size: 0.9em;
+    color: #4a4a4a;
+}
+
+a {
+    text-decoration: none;
+    color: #4575c8;
+}
+
+img {
+    margin-bottom: 1em;
+    padding: 3px;
+    border: 1px solid #ddd;
+}
+
+blockquote {
+    padding: 0;
+    border-left: solid 4px #bbb;
+    color: #999;
+}
+
+hr {
+    background-color: transparent;
+    border: none;
+    border-top: solid 1px #bbb;
+}
+
+
+/* customize SyntaxHighlighter css */
+.syntaxhighlighter {
+    padding: 2px 0;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+}
+
+.syntaxhighlighter .line.alt1 {
+    background-color: #f8f8f8 !important;
+}
+
+.syntaxhighlighter .line.alt2 {
+    background-color: #fff !important;
+}
+
+.syntaxhighlighter a,
+.syntaxhighlighter div,
+.syntaxhighlighter code,
+.syntaxhighlighter table,
+.syntaxhighlighter table td,
+.syntaxhighlighter table tr,
+.syntaxhighlighter table tbody,
+.syntaxhighlighter table thead,
+.syntaxhighlighter table caption,
+.syntaxhighlighter textarea {
+     font-family: "Osaka－等幅", "Osaka-Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+}
+
+
+/* indent */
+p, table, pre, blockquote, div.syntaxhighlighter {
+    margin-left: 1.4em !important;
+}
+
+div.syntaxhighlighter {
+    /* indentによる右へのずれを何とかする */
+    width: auto !important;
+}
+
+
+/* under margin */
+p,
+pre,
+table {
+    margin-bottom: 1em;
+}
+
