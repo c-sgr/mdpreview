@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<title>WCF WebSocketテスト</title>
+    <style>
+			.msg {
+				font-size: 14pt;
+			}
+
+			.text {
+				margin-left: 8px;
+				font-size: 1.7em;
+				font-weight: bold;
+			}
+      img {
+        width: 640px;
+        height: 360px;
+        border: solid 1px #d0d0d0;
+				padding: 2px;
+      }
+    </style>
+  </head>
+  <body>
+		<p class="msg">ip address:&nbsp;<input type="text" id="ip" value="192.168.1.100"></p>
+		<p class="msg">port:&nbsp;<input type="text" id="port" value="3000"></p>
+		<div>
+			<button id="startbtn">Start</button>
+			<button id="stopbtn" disabled>Stop</button>
+		</div>
+		<hr>
+		<p class="msg">status:<span id="status" class="text"></span></p>
+		<p class="msg">fps:<span id="fps" class="text"></span></p>
+    <div>
+      <img id="img" src="" />
+    </div>
+    <script>
+	    (function(window) {
+		    var ipinput = document.getElementById('ip');
+			var portinput = document.getElementById('port');
+			var startBtn = document.getElementById('startbtn');
+			var stopBtn = document.getElementById('stopbtn');
+			var statusMsg = document.getElementById('status');
+			var fpsMsg = document.getElementById('fps');
+			var img = document.getElementById('img');
+			var ws = null;
+			var fps = 0;
+			var before = new Date().getSeconds();
+
+			document.getElementById('startbtn').onclick = function() {
+				var ip = ipinput.value;
+				var port = portinput.value;
+
+				ws = new WebSocket('ws://' + ip + ':' + port + '/image');
+
+				startBtn.disabled = true;
+
+				ws.onerror = e => {
+					statusMsg.innerText = 'error: ' + e.data;
+				};
+
+				ws.onopen = e => {
+					statusMsg.innerText = 'opened.';
+					stopBtn.disabled = false;
+				};
+
+				ws.onclose = e => {
+					statusMsg.innerText = 'closed.';
+					startBtn.disabled = false;
+					stopBtn.disabled = true;
+				};
+
+				ws.onmessage = e => {
+					var reader = new FileReader();
+					reader.readAsDataURL(e.data);
+					reader.onload = () => {
+						img.src = reader.result;
+
+						let now = new Date().getSeconds();
+						fps += 1;
+						if (now !== before) {
+							fpsMsg.innerHTML = fps + ' <small>(' + new Date().toLocaleTimeString() + ')</small>';
+							fps = 0;
+							before = now;
+						}
+					};
+				}
+			};
+			document.getElementById('stopbtn').onclick = function() {
+				if (ws) {
+					ws.close();
+				}
+			};
+      })(window);
+    </script>
+  </body>
+</html>
